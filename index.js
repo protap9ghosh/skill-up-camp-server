@@ -26,7 +26,22 @@ async function run() {
       // Connect the client to the server	(optional starting in v4.7)
       await client.connect();
 
-      
+      const instructorCollection = client.db("skillUpDB").collection("instructor");
+      const userCollection = client.db("userDB").collection("user");
+
+      // insert a instructor
+      app.post("/instructor", async (req, res) => {
+         const newInstructor = req.body;
+         console.log(newInstructor);
+         const result = await instructorCollection.insertOne(newInstructor);
+         res.send(result);
+      });
+      app.post("/user", async (req, res) => {
+         const user = req.body;
+         console.log(user);
+         const result = await userCollection.insertOne(user);
+         res.send(result);
+      });
 
       // Send a ping to confirm a successful connection
       await client.db("admin").command({ ping: 1 });
