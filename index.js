@@ -41,7 +41,7 @@ async function run() {
          res.send(result);
       })
 
-      // Featured Classes
+      // Featured Classes find
       app.get("/featured_classes", async (req, res) => {
          const cursor =  classesCollection.find().skip(2)
          const result = await cursor.toArray();
