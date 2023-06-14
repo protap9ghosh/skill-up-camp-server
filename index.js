@@ -41,6 +41,13 @@ async function run() {
          res.send(result);
       })
 
+      // Featured Classes
+      app.get("/featured_classes", async (req, res) => {
+         const cursor =  classesCollection.find().skip(2)
+         const result = await cursor.toArray();
+         res.send(result);
+      });
+
       // Send a ping to confirm a successful connection
       await client.db("admin").command({ ping: 1 });
       console.log(
