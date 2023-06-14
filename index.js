@@ -54,9 +54,9 @@ async function run() {
 run().catch(console.dir);
 
 app.get('/', (req, res) => {
-   res.send('Skill Up Camp is running...')
+   res.send('Skill Up is running...')
 })
 
 app.listen(port, () => {
-   console.log(`Skill Up Camp is running on port ${port}`);
+   console.log(`Skill Up is running on port ${port}`);
 })
