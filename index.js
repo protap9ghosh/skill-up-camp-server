@@ -27,19 +27,10 @@ async function run() {
       client.connect();
 
       const instructorCollection = client.db("skillUpDB").collection("instructor");
-      const userCollection = client.db("userDB").collection("user");
+      const classesCollection = client.db("skillUpDB").collection("classes");
 
-      // insert a instructor
-      app.post("/instructor", async (req, res) => {
-         const newInstructor = req.body;
-         console.log(newInstructor);
-         const result = await instructorCollection.insertOne(newInstructor);
-         res.send(result);
-      });
-      app.post("/user", async (req, res) => {
-         const user = req.body;
-         console.log(user);
-         const result = await userCollection.insertOne(user);
+      app.get("/instructors", async (req, res) => {
+         const result = await instructorCollection.find().toArray();
          res.send(result);
       });
 
