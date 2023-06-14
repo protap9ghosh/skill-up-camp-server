@@ -29,10 +29,17 @@ async function run() {
       const instructorCollection = client.db("skillUpDB").collection("instructor");
       const classesCollection = client.db("skillUpDB").collection("classes");
 
+      // Instructors
       app.get("/instructors", async (req, res) => {
          const result = await instructorCollection.find().toArray();
          res.send(result);
       });
+
+      // Classes
+      app.get("/classes", async (req, res) => {
+         const result = await classesCollection.find().toArray();
+         res.send(result);
+      })
 
       // Send a ping to confirm a successful connection
       await client.db("admin").command({ ping: 1 });
